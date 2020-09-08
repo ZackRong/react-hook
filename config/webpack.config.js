@@ -49,6 +49,7 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+const lessRegex = /\.less$/;
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -382,6 +383,7 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
+                  ['import', { libraryName: 'antd', style: true }],
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -484,6 +486,24 @@ module.exports = function(webpackEnv) {
                 },
                 'sass-loader'
               ),
+            },
+            {
+              test: /\.less$/,
+              use: [
+                require.resolve('style-loader'),
+                require.resolve('css-loader'),
+                {
+                  loader: require.resolve('less-loader'),
+                  options: {
+                    lessOptions: { // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
+                      modifyVars: {
+                        'primary-color': '#1DA57A',
+                      },
+                      javascriptEnabled: true,
+                    },
+                  },
+                }
+              ],
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
