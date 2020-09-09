@@ -8,6 +8,7 @@ const prefixCls = 'home-page';
 const Home = () => (
   <div className={prefixCls}>
     <Link to='/useState'>useState</Link>
+    <Link to='/useEffect'>useEffect</Link>
   </div>
 );
 
