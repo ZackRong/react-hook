@@ -8,6 +8,9 @@ const UseState = () => {
   const [count, setCount] = useState(0);
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
+  const [count3, setCount3] = useState(() => {
+    return 10;
+  })
 
   const increase = () => {
     setCount(count + 1);
@@ -46,6 +49,9 @@ const UseState = () => {
       <div className={prefixCls + '-block'}>
         <span className='text'>{`3s之后函数式增加的数量为：${count2}`}</span>
         <Button onClick={increaseAfter3sFn}>3s之后函数式增加，点击多次，更新多次</Button>
+      </div>
+      <div className={prefixCls + '-block'}>
+        <span className='text'>{`惰性初始化数据，初始数据是经过函数计算的，不能是异步的：${count3}`}</span>
       </div>
     </div>
   );
