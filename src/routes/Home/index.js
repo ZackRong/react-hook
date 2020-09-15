@@ -10,6 +10,8 @@ const Home = () => (
     <Link to='/useEffect'>useEffect</Link>
     <Link to='/useContext'>useContext</Link>
     <Link to='/useReducer'>useReducer</Link>
+    <Link to='/useCallback'>useCallback</Link>
+    <Link to='/useMemo'>useMemo</Link>
   </div>
 );
 
